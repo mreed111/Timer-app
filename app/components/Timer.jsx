@@ -1,5 +1,7 @@
 var React = require('react');
 
+var Clock = require('Clock');
+
 var Timer = React.createClass({
   //
   render: function () {
@@ -7,6 +9,7 @@ var Timer = React.createClass({
         //
         <div>
           <p>Timer Component</p>
+          <Clock/>
         </div>
     );
   }
