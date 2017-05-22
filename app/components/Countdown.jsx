@@ -30,6 +30,11 @@ var Countdown = React.createClass({
       }
     }
   },
+  componentWillUnmount: function () {
+    // clear the running timer.
+    clearInterval(this.timer);
+    this.timer = undefined;
+  },
   startTimer: function () {
     this.timer = setInterval( () => {
       //
@@ -38,6 +43,11 @@ var Countdown = React.createClass({
         count: (newCount >= 0) ? newCount : 0
       });
 
+      if (newCount === 0) {
+        // when counter reaches zero(0), this will clear the 
+        // running timer and re-display the countdownForm component.
+        this.setState({countdownStatus: 'stopped'});
+      }
     }, 1000);
   },
   handleSetCountdown: function (seconds) {
